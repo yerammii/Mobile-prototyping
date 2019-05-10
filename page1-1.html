@@ -1,1 +1,23 @@
+<html>
+<head>
+</head>
+<body>
+	<div id='dust'></div>
+	<div id='temp'></div>
+	<div id='humidity'></div>
+	<div id='sky'></div>
+	<div id='rain'></div>
+	<div id='wind1'></div>
+	<div id='wind2'></div>
+</body>
 
+<script>
+	const onDataLoaded = (data) => {
+		// 온도
+		const dataG3 = data.feed.entry.find((entry) => entry.title.$t == 'G3').content.$t
+		document.getElementById('temp').innerHTML = "현재 온도: " + dataG3
+	}
+</script>
+<script src="https://spreadsheets.google.com/feeds/cells/1fImbr5ovXR07P7NxYKqU6FsYKsHHaonZV9PmDnjt_T8/2/public/basic?alt=json-in-script&callback=onDataLoaded"></script>
+
+</html>
